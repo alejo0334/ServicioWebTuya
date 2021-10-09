@@ -1,14 +1,23 @@
 Título del Proyecto
-Servicio Web Tuya
+ServicioWebTuya
 
 Pre-requisitos
 Se realizan instalaciones de los siguientes packages:
 
+NUGET
 * Microsoft.EntityFrameworkCore.Tools: Permite realizar tareas relacionadas con EF.
 * Microsoft.EntityFrameworkCore.SqlServer: Permite realizar tareas relacionadas con EF.
+* Install-Package System.Net.Http.Formatting.Extension -Version 5.2.3: Se instala para realizar envio Post a la api con JsonMediaTypeFormatter
+* Swashbuckle.AspNetCore: Para documentar API.
+
+LIBRERIAS
 * System.Net.Http: Se usa para ralizar consumo de la API.
 * Newtonsoft.Json: Se usa para enviar data, serializar y deseralizar data
-* Install-Package System.Net.Http.Formatting.Extension -Version 5.2.3: Se instala para realizar envio Post a la api con JsonMediaTypeFormatter
+* System.Collections.Generic: Uso para colecciones genericas
+* System.Linq: Uso para realizar consultas rapidas de facil manejo entre la data
+* WebAplication.WebCliente.Data: Permite la comunicación con el reporsitorio
+* Microsoft.Extensions.DependencyInjection: Inyección de dependencia, para evitar el acoplamiento entre las clases.
+* Microsoft.OpenApi.Models: Para documentar API.
 
 Ejecución:
 
@@ -22,3 +31,12 @@ Pantallas:
 2. Pedidos: En esta pantalla se ven reflejados los nuevos pedidos que se crean una vez sean facturados desde la pantalla Factura.
 
 Nota: en el archivo appsettigs.json se cre objeto PathAPI con la ruta del localHost para consumo de API, cambiar de ser necesario.
+
+Documentación API 
+
+* agregar en URL /swagger y este abrira la documentacín necesaria de la API
+Ejemplo con mi maquina: https://localhost:44362/swagger/index.html
+
+
+NOTA: NO LOGRE REALIZAR EL DOCKER, ME PRESENTARON FALLAS CON EL WSL2.
+
