@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace WebAplication.WebCliente.Controllers
     {
 
         private readonly DataContext _context;
-        public FacturarController(DataContext context)
+        private readonly IConfiguration _config;
+        public FacturarController(DataContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;
         }
 
         // GET: Facturar
@@ -24,8 +27,8 @@ namespace WebAplication.WebCliente.Controllers
         {
             HttpClient clienteHttp = new HttpClient();
 
-            clienteHttp.BaseAddress = new Uri("https://localhost:44362/");
-
+            string path = _config.GetSection("PathAPI").Value;
+            clienteHttp.BaseAddress = new Uri(path);
             var request = clienteHttp.GetAsync("api/APIREST").Result;
 
             if (request.IsSuccessStatusCode)
@@ -52,8 +55,9 @@ namespace WebAplication.WebCliente.Controllers
                 var productos = _context.Producto;
 
                 HttpClient clienteHttp = new HttpClient();
+                string path = _config.GetSection("PathAPI").Value;
+                clienteHttp.BaseAddress = new Uri(path);
 
-                clienteHttp.BaseAddress = new Uri("https://localhost:44362/");
                 foreach (var item in productos)
                 {
                     Pedidos pedido = new Pedidos();
