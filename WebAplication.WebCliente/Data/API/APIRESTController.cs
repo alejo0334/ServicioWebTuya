@@ -19,6 +19,10 @@ namespace WebAplication.WebCliente.Data.API
             _context = context;
         }
 
+        /// <summary>
+        /// Obtiene la lista de productos a facturar
+        /// </summary>
+        /// <returns></returns>
         // GET: api/<APIController>
         [HttpGet]
         public IEnumerable<Productos> Get()
@@ -26,6 +30,11 @@ namespace WebAplication.WebCliente.Data.API
             return _context.Producto.ToList();
         }
 
+        /// <summary>
+        /// Persiste los nuevos pedidos facturados
+        /// </summary>
+        /// <param name="pedido"></param>
+        /// <returns></returns>
         [HttpPost]
         public bool Post(Pedidos pedido)
         {
